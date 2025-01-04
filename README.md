@@ -1,8 +1,6 @@
-# React + Vite
+# Dynamic List of Items with Strikethrough
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application that displays a dynamic list of items. Each item in the list has a checkbox that, when clicked, adds a strikethrough to the item's text, indicating it as completed.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+###Feature Enhancements
+1. Functionality to remove items from the list.

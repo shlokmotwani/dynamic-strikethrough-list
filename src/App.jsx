@@ -12,6 +12,11 @@ function App() {
     setList(tempList);
   }
 
+  function handleDelete(index){
+    let tempList = list.filter((item, i) => i!=index);
+    setList(tempList);
+  }
+
   return (
     <div>
       <h1>To-Do List</h1>
@@ -23,6 +28,7 @@ function App() {
                 index={index}
                 item={item}
                 handleCheckBoxToggle={handleCheckBoxToggle}
+                handleDelete={handleDelete}
               />
             </div>
           );
