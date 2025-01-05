@@ -5,6 +5,7 @@ import { ListItem } from "./ListItem";
 
 function App() {
   const [list, setList] = useState(tasks);
+  const [input, setInput] = useState("")
 
   function handleCheckBoxToggle(index) {
     let tempList = list.slice();
@@ -14,6 +15,21 @@ function App() {
 
   function handleDelete(index){
     let tempList = list.filter((item, i) => i!=index);
+    setList(tempList);
+  }
+
+  function handleInputChange(e){
+    setInput(e.target.value);
+  }
+
+  function handleAdd(){
+    let tempList = [
+      ...list,
+      {
+        title: input,
+        finished: false,
+      }
+    ];
     setList(tempList);
   }
 
@@ -34,6 +50,10 @@ function App() {
           );
         })}
       </ul>
+      <div>
+        <input type="text" value={input} onChange={handleInputChange}/>
+        <button onClick={handleAdd}>Add Task</button>
+      </div>
     </div>
   );
 }
