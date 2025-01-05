@@ -32,6 +32,10 @@ ul>p{
   margin: 10px auto;
 }
 
+.item-true{
+  text-decoration: line-through;
+}
+
 button{
   margin: 0 10px;
 }

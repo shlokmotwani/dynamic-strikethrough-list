@@ -1,30 +1,21 @@
 /* eslint-disable react/prop-types */
 
-function ListItem({index, item, handleCheckBoxToggle, handleDelete}) {
- return <div className="list-item">
-    {item.finished && (
-    <>
+function ListItem({ item, handleCheckBoxToggle, handleDelete }) {
+  return (
+    <div className="list-item">
       <div>
-          <input
-            type="checkbox"
-            onChange={() => handleCheckBoxToggle(index)}
-            checked
-          />
-          <del>{item.title}</del>
+        <input
+          type="checkbox"
+          onChange={() => handleCheckBoxToggle(item.title)}
+          checked={item.finished}
+        />
+        <span className={`item-${item.finished}`}>{item.title}</span>
       </div>
-      <button className="delete-btn" onClick={()=>handleDelete(item.title)}>X</button>
-    </>
-    )}
-    {!item.finished && (
-    <>
-      <div>
-          <input type="checkbox" onChange={() => handleCheckBoxToggle(index)} />
-          {item.title}
-      </div>
-      <button className="delete-btn" onClick={()=>handleDelete(item.title)}>X</button>
-    </>
-    )}
-  </div>
+      <button className="delete-btn" onClick={() => handleDelete(item.title)}>
+        X
+      </button>
+    </div>
+  );
 }
 
-export { ListItem }
+export { ListItem };

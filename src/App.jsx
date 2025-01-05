@@ -10,9 +10,10 @@ function App() {
   const [input, setInput] = useState("");
   const [filter, setFilter] = useState(filterOptions[0]);
 
-  function handleCheckBoxToggle(index) {
+  function handleCheckBoxToggle(itemTitle) {
     let tempList = list.slice();
-    tempList[index].finished = !tempList[index].finished;
+    let itemIndex = tempList.findIndex((item) => item.title == itemTitle);
+    tempList[itemIndex].finished = !tempList[itemIndex].finished;
     setList(tempList);
   }
 
@@ -70,11 +71,10 @@ function App() {
             }
           })
           // render ListItem and their respective status (checked, striked-out etc.)
-          .map((item, index) => {
+          .map((item) => {
             return (
               <div key={item.title}>
                 <ListItem
-                  index={index}
                   item={item}
                   handleCheckBoxToggle={handleCheckBoxToggle}
                   handleDelete={handleDelete}
