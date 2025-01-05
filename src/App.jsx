@@ -3,9 +3,12 @@ import "./App.css";
 import { tasks } from "./tasks";
 import { ListItem } from "./ListItem";
 
+const filterOptions = ["All", "Finished", "Pending"];
+
 function App() {
   const [list, setList] = useState(tasks);
   const [input, setInput] = useState("");
+  const [filter, setFilter] = useState(filterOptions[0]);
 
   function handleCheckBoxToggle(index) {
     let tempList = list.slice();
@@ -13,8 +16,8 @@ function App() {
     setList(tempList);
   }
 
-  function handleDelete(index) {
-    let tempList = list.filter((item, i) => i != index);
+  function handleDelete(itemTitle) {
+    let tempList = list.filter((item) => item.title != itemTitle);
     setList(tempList);
   }
 
@@ -33,22 +36,52 @@ function App() {
     setList(tempList);
   }
 
+  function handleFilterChange(e) {
+    setFilter(e.target.value);
+  }
+
   return (
     <div>
       <h1>To-Do List</h1>
-      <ul>
-        {list.map((item, index) => {
+      <select
+        name="filter-dropdown"
+        id="filter-dropdown"
+        onChange={handleFilterChange}
+      >
+        {filterOptions.map((option) => {
           return (
-            <div key={index}>
-              <ListItem
-                index={index}
-                item={item}
-                handleCheckBoxToggle={handleCheckBoxToggle}
-                handleDelete={handleDelete}
-              />
-            </div>
+            <option key={option} value={option}>
+              {option}
+            </option>
           );
         })}
+      </select>
+      <ul>
+        {list.length == 0 && <p>No tasks to show!</p>}
+        {/* filter the list based on the filter category chosen */}
+        {list
+          .filter((item) => {
+            if (filter == "All") {
+              return item;
+            } else if (filter == "Pending") {
+              return !item.finished;
+            } else if (filter == "Finished") {
+              return item.finished;
+            }
+          })
+          // render ListItem and their respective status (checked, striked-out etc.)
+          .map((item, index) => {
+            return (
+              <div key={item.title}>
+                <ListItem
+                  index={index}
+                  item={item}
+                  handleCheckBoxToggle={handleCheckBoxToggle}
+                  handleDelete={handleDelete}
+                />
+              </div>
+            );
+          })}
       </ul>
       <div>
         <input

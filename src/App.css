@@ -21,6 +21,12 @@ ul{
   min-width: 30vw;
 }
 
+/* TEXT - "No tasks to show" */
+ul>p{
+  align-self: center;
+  margin: auto;
+}
+
 .list-item{
   display: flex;
   margin: 10px auto;

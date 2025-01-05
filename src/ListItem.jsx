@@ -12,7 +12,7 @@ function ListItem({index, item, handleCheckBoxToggle, handleDelete}) {
           />
           <del>{item.title}</del>
       </div>
-      <button className="delete-btn" onClick={()=>handleDelete(index)}>X</button>
+      <button className="delete-btn" onClick={()=>handleDelete(item.title)}>X</button>
     </>
     )}
     {!item.finished && (
@@ -21,7 +21,7 @@ function ListItem({index, item, handleCheckBoxToggle, handleDelete}) {
           <input type="checkbox" onChange={() => handleCheckBoxToggle(index)} />
           {item.title}
       </div>
-      <button className="delete-btn" onClick={()=>handleDelete(index)}>X</button>
+      <button className="delete-btn" onClick={()=>handleDelete(item.title)}>X</button>
     </>
     )}
   </div>
