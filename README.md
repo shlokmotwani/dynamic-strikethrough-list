@@ -4,5 +4,5 @@
 
 A React application that displays a dynamic list of items. Each item in the list has a checkbox that, when clicked, adds a strikethrough to the item's text, indicating it as completed.
 
-###Feature Enhancements
-1. Functionality to remove items from the list.
+### Feature Enhancements
+1. Functionality to add and remove items from the list.
